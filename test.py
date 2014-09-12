@@ -1,21 +1,15 @@
-from weakref import WeakKeyDictionary
+import subprocess
+import sys
+import os.path
 
-class Descriptor(object):
-    def __init__(self, name, default=None):
-        self.default = default
-        self.name = '_'+name
- 
-    def __get__(self, instance, owner):
-	print "****",
-	if not instance:
-		return self
-        return getattr(instance,self.name,self.default)
- 
-    def __set__(self, instance, value):
-        if callable(callback) and hasattr(instance,callback.__name__):
-                callback(value)
-        setattr(instance,self.name,value)
-    def add_callback(self, instance, callback):
-        if hasattr(instance,callback.__name__):
-            raise AttributeError("wrong %s" % callback.__name__)
-        setattr(instance,callback.__name__,callback)
+if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if not argv:
+        exit(0)
+    if argv[0] !='python':
+        argv.insert(0,'python')
+    command = argv
+    path = os.path.abspath('.')
+    process = subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    stdout_value,stderr_value = process.communicate()
+    print(stdout_value,stderr_value)
