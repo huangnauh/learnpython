@@ -16,7 +16,7 @@ if __name__ == '__main__':
     builtin_outputs = map(do_calculation, inputs)
     print 'Built-in:', builtin_outputs
     
-    pool_size = 1
+    pool_size = 2
     print(pool_size)
     pool = multiprocessing.Pool(processes=pool_size,
                                 initializer=start_process,

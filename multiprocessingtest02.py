@@ -6,17 +6,18 @@ import logging
 import multiprocessing
 import time
 import pdb
+import Queue
 def inputQ(queue):
 #    pdb.Pdb(stdin=open('p_in','r+'),stdout=open('p_out','w+')).set_trace()
-    count = 5000
+    count = 5
     while count > 0:
         count -= 1
-        if count % 200 == 0:
+        if count % 2 == 0:
             print "count:",count,"buffer:",len(queue._buffer)
         info = "put:"+str(count)
         try:
             queue.put(info,timeout=1)
-        except Full:
+        except Queue.Full:
             print("Full")
 
 def outputQ(queue,lock):

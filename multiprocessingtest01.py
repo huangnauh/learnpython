@@ -4,7 +4,7 @@ from multiprocessing import Process,Queue,Pipe
 import ipdb
 def proc1(conn):
     conn.send([42,None,"hello"])
-#    print "proc1:",conn.recv()
+    print "proc1:",conn.recv()
 
 def proc2(conn):
     print "proc2:",conn.recv()

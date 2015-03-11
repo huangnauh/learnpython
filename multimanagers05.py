@@ -7,14 +7,16 @@ import os
 import time 
  
 def testFunc(nsum,cc,lock,rlock):
+    x = nsum
     start = time.time()
     for i in xrange(100):
         with lock:
             nsum.value += cc
     print 'lock',time.time()-start
+    nsum = x
     start = time.time()
     for i in xrange(100):
-        with lock:
+        with rlock:
             nsum.value += cc
     print 'rlock',time.time()-start
 def test():

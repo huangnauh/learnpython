@@ -1,9 +1,10 @@
 # coding=utf-8
 import time
-from multiprocessing import Process, Value,Array,Manager
+from multiprocessing import Process, Value,Array,Manager,Lock
 import multiprocessing
 import os
-
+#lock = Lock()
+#lock = Lock()
 def func(val):
     for i in range(10):
         time.sleep(0.1)
@@ -27,18 +28,19 @@ def f(ns,x,y):
     ns.y = y
 
 
-def testFunc(nsum,cc):
+def testFunc(nsum,cc,lock):
     for i in xrange(10):
         time.sleep(0.1)
-        nsum.value += cc
+        with lock:
+            nsum.value += cc
 
 def test3():
     manager = Manager()
     nsum = manager.Value('tmp', 0)
     threads = []
-
+    lock = manager.RLock()
     for ll in range(10):
-        t = Process(target=testFunc, args=(nsum,1,))
+        t = Process(target=testFunc, args=(nsum,1,lock))
         t.daemon = True
         threads.append(t)
 
@@ -54,6 +56,7 @@ def test3():
     
 def test():
     val = Array('i',[0]*10)                           #使用value来共享内存 
+    print val[:]
     processList = [Process(target=func, args=(val,)) for i in range(10)]
     for p in processList: p.start()
     for p in processList: p.join()
@@ -65,8 +68,8 @@ def test2():
     ns.x = [] #manager内部包括可变对象
     ns.y = [] 
     print 'before process operation:', ns,id(ns.x)
-    p = multiprocessing.Process(target=f1,args=(ns,))
-#    p = multiprocessing.Process(target=f, args=(ns,ns.x,ns.y))
+#    p = multiprocessing.Process(target=f1,args=(ns,))
+    p = multiprocessing.Process(target=f, args=(ns,ns.x,ns.y))
     p.start()
     p.join()
     print 'after process operation', ns,id(ns.x)       #修改根本不会生效
@@ -107,7 +110,7 @@ def test_sharedvalues():
     p.start()
     p.join()
 if __name__ == '__main__':
-    test2()
+    test3()
 
     
 
