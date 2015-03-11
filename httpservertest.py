@@ -1,11 +1,5 @@
 #encoding=utf-8
-'''
-Created on 2012-11-7
 
-@author: Steven
-http://www.lifeba.org
-基于BaseHTTPServer的http server实现，包括get，post方法，get参数接收，post参数接收。
-'''
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import io,shutil  
 import urllib,time
