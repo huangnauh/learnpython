@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<ul id="myList">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+</ul>
+<div id="myDiv">huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<div>huang li bo</div>
+<form id="myForm" action="">
+    <input  id="ip1" type="text" name="username" value="0"/>
+    <input id="ip2" type="button" value="echo name"/></form>
+<!--<img onload="alert('in html loaded')" id="myImg" src="cover.jpg" style="width:200px;" alt=""/>-->
+<script>
+    window.addEventListener("load",function(event){
+//        alert(event.target);
+//        var image = document.createElement("img");
+        /*var image = new Image();
+        image.addEventListener("load",function(event){
+//            alert("image loaded");
+        },false);
+        document.body.appendChild(image);
+        image.src = "cover.jpg";
+        image.style.width = "200px";
+
+        var script = document.createElement("script");
+        script.addEventListener("load",function(event){
+//            alert("script loaded");
+        },false);
+        script.src = "test2.js";
+        document.body.appendChild(script);*/
+
+        var link = document.createElement("link");
+        link.addEventListener("load",function(event){
+//            alert("css loaded");
+        },false);
+        link.type = "test/css";
+        link.rel = "stylesheet";
+        link.href = "test2.css";
+        link.addEventListener("DOMNodeInsertedIntoDocument",function(event){
+            alert(event.type);
+            alert(event.target);
+        },false);
+
+
+
+        document.addEventListener("DOMSubtreeModified",function(event){
+            alert(event.type);
+            alert(event.target);
+        },false);
+        document.addEventListener("DOMNodeInserted",function(event){
+            alert(event.type);
+            alert(event.target);
+            alert(event.relatedNode);
+        },false);
+
+        document.getElementsByTagName("head")[0].appendChild(link);
+        var ul = document.getElementById("myList");
+        ul.addEventListener("DOMNodeRemoved",function(event){
+            alert(event.type);
+            alert(event.target);
+            alert(event.relatedNode);
+        },false);
+        var filter = function(node){
+            return node.tagName.toLowerCase() == "li" ?
+                    NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;
+        };
+        /*var iterator = document.createNodeIterator(ul,NodeFilter.SHOW_ELEMENT,filter,false);
+        var node = iterator.nextNode();
+        while(node != null){
+            node.addEventListener("DOMNodeRemovedFromDocument",function(event){
+                alert(event.type);
+                alert(event.target);
+            },false);
+            node = iterator.nextNode();
+        }*/
+
+        document.body.removeChild(ul);
+    },false);
+
+    window.addEventListener("unload",function(event){
+        alert("unloaded");
+    },false);
+
+    window.addEventListener("resize",function(event){
+        alert("Resized");
+    },false);
+
+    window.addEventListener("scroll",function(event){
+       /* if (document.compatMode == "CSS1Compat"){
+            alert(document.documentElement.scrollTop);
+        }else{
+            alert(document.body.scrollTop);
+        }*/
+    },false);
+    var ip1 = document.getElementById("ip1");
+ /*   ip1.addEventListener("keypress",function(event){
+     alert(event.charCode);
+     },false);*/
+   /* ip1.addEventListener("textInput",function(event){
+        alert(event.data);
+    },false);*/
+    ip1.addEventListener("compositonstart",function(event){
+        alert("start");
+    },false);
+    ip1.addEventListener("compositonupdate",function(event){
+        alert(event.data);
+    },false);
+    ip1.addEventListener("compositonupdate",function(event){
+        alert("end");
+    },false);
+    var myForm = document.getElementById("myForm");
+    ip1.addEventListener("focusin",function(event){
+//        alert("input focusin");
+    },false);
+
+    ip1.addEventListener("focusout",function(event){
+//        alert("input focusout");
+    },false);
+    function foo(){
+        var count = 0;
+        return function bar(event){
+            count += event.button;
+            this.firstElementChild.value = count;
+        };
+    }
+    bar = foo();
+    myForm.addEventListener("mousedown",bar,false);
+    myForm.addEventListener("mouseup",bar,false);
+    var ip2 = document.getElementById("ip2");
+//    ip2.addEventListener("keypress",function(event){
+//        alert(event.charCode);
+//    },false);
+
+    ip2.addEventListener("click",function(event){
+//        alert(event.button);
+//        alert("ip2 client coordinates:" + event.clientX + "," +event.clientY);
+    },false);
+//    alert(document.implementation.hasFeature("CompositionEvent","3.0"))
+    myForm.addEventListener("click",function(event){
+
+        /*var keys = new Array();
+        if(event.shiftKey){
+            keys.push("shift");
+        }
+        if(event.ctrlKey){
+            keys.push("ctrl");
+        }
+        if(event.altKey){
+            keys.push("altKey");
+        }
+        if(event.metaKey){
+            keys.push("meta");
+        }
+        alert("keys:" + keys.join(','));*/
+/*
+        alert("myForm client coordinates:" + event.clientX + "," +event.clientY);
+        alert("myForm page coordinates:" + event.pageX + "," +event.pageY);
+        alert("myForm screen coordinates:" + event.screenX + "," +event.screenY);
+        alert("myForm scroll left:" + document.body.scrollLeft + ",top:" + document.body.scrollTop);
+*/
+    },false);
+    myForm.addEventListener("mouseout",function(event){
+//        alert("mouse out");
+//        alert(event.relatedTarget);
+    },false);
+    myForm.addEventListener("mouseover",function(event){
+//        alert("mouse over");
+//        alert(event.relatedTarget);
+    },false);
+    /*myForm.addEventListener("focusin",function(event){
+        alert("form focusin");
+    })
+    myForm.addEventListener("focusout",function(event){
+        alert("form focusout");
+    })*/
+    /*var image = document.getElementById("myImg");
+    image.addEventListener("load",function(event){
+        alert("in javascript image loaded");
+        alert(event.target === image);
+    },false);*/
+
+
+</script>
+
+</body>
+</html>

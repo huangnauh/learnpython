@@ -1,0 +1,7 @@
+book, maintitle, subtitle, author{
+    display: block;
+}
+
+pubdate{
+    display: inline;
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="9test.css"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div class="test">
+    <div class="left">123 </div>
+    <div class="right">456 test this is a test this is a test this is a test this is a test  </div>
+    <div class="center">789 this is a test this is a test 789 this is a test this is a test 789 this is a test this is a test 789 this is a test this is a test</div>
+    <div style="clear:both"></div>
+</div>
+<p class="now" style="width:100px;height:100px;background: blueviolet;">
+    this is a p this is a p this is a p this is a p
+</p>
+<p class="two">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="three">This is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="four">This is a paragraph <strong>strong</strong><em>larger</em> <span>smaller</span></p>
+<p class="five">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="six">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="seven">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="eight">this is a paragraph</p>
+<p class="nine">this is a paragraph</p>
+<p class="ten">this is a paragraph</p>
+<h1 id="page-title">Greeting <em>yes,this is em</em> <small>small</small></h1>
+<p class="aside">It's a fine way to start a day <em>this is test</em></p>
+<p>There are many ways to greet a person <small>small</small></p>
+<h2 style="color :green;">Salutations Small</h2>
+<p>There is noting finer than a hearty welcome from </p>
+<!--<button id="button2">button</button>-->
+<p class="aside">a thick and juicy</p>
+<p class="empty">def<em>abc</em></p>
+<p id="toolbar">abc<a href="www.aol.com">aol</a></p>
+<!--<button id="button1">button</button>-->
+<a href="void(0)"  style="margin-bottom:900px; display:block;" onclick="document.getElementById('showscroll').scrollIntoView();">按钮2</a>
+<div id="showscroll" style="width:100px; height:100px;background: pink;">div</div>
+<script>
+/*    alert(document.implementation.hasFeature("core","3.0"))
+    alert(document.implementation.hasFeature("core","2.0"))
+    alert(document.implementation.hasFeature("HTML","2.0"))
+    alert(document.implementation.hasFeature("Views","2.0"))
+    alert(document.implementation.hasFeature("XML","2.0"))*/
+
+    var div = document.getElementsByClassName("left")[0];
+    div.outerHTML = "<p>this is  a p</p>";
+    var div = document.getElementsByClassName("test")[0];
+    //alert(div.firstElementChild.innerHTML);
+    var div = document.getElementsByClassName("now")[0];
+    div.insertAdjacentHTML("beforebegin","<p>beforebegin</p>");
+    div.insertAdjacentHTML("afterbegin","<p>after begin</p>");
+    div.insertAdjacentHTML("afterend","<p>after end</p>");
+    div.insertAdjacentHTML("beforeend","<p>before end</p>");
+    document.getElementById("button1").onclick = function(){
+        document.body.scrollByPages(-1);
+//        document.getElementsByClassName("empty")[0].scrollIntoView();
+    }
+    var p = document.getElementsByClassName("two")[0];
+//    alert(p.innerText);
+    p.innerText = "&lt;hello>welcome</hello>";
+    p.innerText = p.innerText;
+//    alert(p.textContent);
+    var button = document.getElementById("button1");
+//    button.focus();
+//    alert(document.documentElement.contains(document.body));
+//    alert(button.compareDocumentPosition(document.body));
+//    document.body.scrollByPages(1);
+    function myContains(refNode,otherNode){
+        if (typeof refNode.contains == "function"){
+            return refNode.contains(otherNode);
+        } else if(typeof refNode.compareDocumentPosition == "function"){
+            return !!(refNode.compareDocumentPosition(otherNode) & 16);
+        } else{
+            var node = otherNode.parentNode;
+            do{
+                if (node === refNode){
+                    return true;
+                }else{
+                    node = node.parentNode;
+                }
+            }while(node !== null);
+            return false;
+        }
+    }
+
+    function getInnerText(element){
+        return (typeof element.textContent == "string") ?
+                element.textContent : element.innerText;
+    }
+    function setInnerText(element,text){
+        if(typeof element.textContent == "string"){
+            element.textContent = text;
+        }else{
+            element.innerText = text;
+        }
+    }
+//    alert(document.activeElement === button);
+
+</script>
+</body>
+</html>

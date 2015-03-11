@@ -1,0 +1,114 @@
+/*h1 + p{
+    color: blue;
+    font-style: italic;
+}*/
+p{
+    color:green;
+    background: white;
+    /*font-style:normal;*/
+}
+p em{
+    color:indianred;
+}
+/**{
+    color : blueviolet;
+}*/
+/*.aside{
+    color:black;
+    background: silver;
+}*/
+h1#page-title{
+    color:black;
+}
+h1{
+    font-size:24px;
+}
+h2{
+    font-variant: small-caps;
+    font-size:18px;
+    /*text-transform: uppercase;*/
+}
+
+/*p{
+    font-size:12px;
+}*/
+/*body {
+    background: url(cover.jpg);
+}*/
+/*h1,h2,p{
+    margin-left:2em;
+}*/
+/*small{
+    font-size: 0.5em;
+}*/
+#toolbar{
+    color:white;
+    background: green;
+}
+#toolbar a:link{
+    color:white;
+}
+h2{
+    color : gray !important;
+}
+p.one{
+    color:rgb(0%,0%,40%);
+    /*font-size:xx-small;*/
+    text-indent:1em;
+}
+/*em{
+    font-size:150%;
+}
+span{
+    font-size:150%;
+}*/
+/*div{
+    font-size:xx-large;
+}
+ul{
+    font-size:80%;
+}
+li{
+    font-size:80%;
+}*/
+p.two{
+    color:rgb(0%,40%,0%);
+    font-size:x-small;
+}
+p.three{
+    color:rgb(40%,40%,0%);
+    font-size:small;
+    font-style: italic;
+    font-variant: small-caps;
+}
+p.four{
+    color:rgb(40%,40%,40%);
+    font-size:medium;
+    font-variant: small-caps;
+}
+/*strong{
+    font-stretch: wider;
+}*/
+p.five{
+    color:rgb(40%,40%,80%);
+    font-size:large;
+    font-style: italic;
+}
+p.six{
+    color:rgb(40%,80%,80%);
+    font-size:x-large;
+    font-style: italic;
+}
+p.seven{
+    color:rgb(80%,80%,80%);
+    font-size:xx-large;
+}
+p.eight{
+    color:rgb(80%,80%,0%);
+}
+p.nine{
+    color:rgb(0%,80%,80%);
+}
+p.ten{
+    color:rgb(80%,0%,80%);
+}

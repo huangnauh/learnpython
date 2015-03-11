@@ -1,0 +1,21 @@
+/*
+span{
+    border:1px dashed black;
+    */
+/*width:100px;*//*
+
+}*/
+div.navigation a{
+    display: block;
+}
+/*ul#rollcall{
+    border:1px solid;
+}*/
+ul#rollcall>li{
+    display: inline;
+    border-right: 1px solid;
+    padding : 0.33em;
+}
+ul#rollcall>li:first-child{
+    border-left : 1px solid;
+}

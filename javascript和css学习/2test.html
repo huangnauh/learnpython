@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>Frameset Example</title>
+</head>
+<meta charset="utf-8">
+<!--<frameset cols="25%,75%">
+    <frame src="frame_a.html">
+    <frame src="frame_b.html">
+</frameset>-->
+<body onload="window.defaultStatus='hello world'">
+<a href="http://www.baid1.com" onmouseover="window.status='hehehehe';return true;">visit baidu</a>
+<form action="">
+this is
+<input type="button" value="加载新文档" onclick="newDoc()">
+</form>
+<p id="demo">demo</p>
+<h1><a name="C4">link here</a></h1>
+<a href="#" onclick(histroy.back();return false;">go back</a>
+<script>
+var w = window.innerWidth;
+var h = window.innerHeight;
+var x = document.getElementById('demo');
+x.innerHTML = "浏览器内部窗口宽度："+w+"，高度："+h;
+document.write("<br />可用宽度："+window.screen.availWidth);
+document.write(",可用高度："+window.screen.availHeight);
+document.write("<br />"+window.location.href);
+document.write("<br />"+window.location.pathname);
+document.write("<br />"+window.screenLeft);
+document.write(","+window.screenTop);
+function newDoc(){
+    window.location.assign("http://www.baidu.com");
+}
+//var x = window.open("http://www.baidu.com","topframe","width=200,height=200,top=200,left=200");
+//alert(x.opener == window);
+/*var timeoutId = window.setTimeout(function(){
+    alert("hello world");
+},1000);*/
+var num = 0;
+var max = 10;
+var intervalId = null;
+/*intervalId = setInterval(function(){
+    num++;
+    if (num == max){
+        clearInterval(intervalId);
+        alert("done");
+    }
+},500);*/
+
+num1=0;
+max1 = 10;
+//setTimeout(incrementNumber,500);
+function incrementNumber(){
+    num1++;
+    if(num1<max1){
+        setTimeout(incrementNumber,500);
+    }else{
+        alert("haha done");
+    }
+}
+/*window.location.assign("http://www.wrox.com/");
+location.hash = "#section1"
+location.search("?q=javascript");*/
+/*setTimeout(function(){
+    location.replace("http://www.wrox.com/");
+},1000);*/
+
+function hasPlugin(name){
+    name = name.toLowerCase();
+    for (var i=0;i<navigator.plugins.length;i++){
+        if(navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+            return true;
+        }
+    }
+}
+/*var o = {toString:function(){}};
+for (var prop in o){
+    alert(prop);
+}*/
+//用户代理检测
+//应该优先采用能力检测和怪癖检测
+var client = function(){
+    var engine = {
+        //呈现引擎
+        ie:0,
+        gecko:0,
+        webkit:0,
+        khtml:0,
+        opera:0,
+        ver : null
+    };
+    var browser = {
+        //浏览器
+        ie:0,
+        firefox:0,
+        safari:0,
+        konq:0,
+        opera:0,
+        chrome:0
+    };
+    var system = {
+        win : false,
+        mac : false,
+        x11 : false,
+        iphone:false,
+        ipod:false,
+        ipad:false,
+        ios:false,
+        android:false,
+        nokiaN:false,
+        winMobile:false
+    };
+    return {
+        engine:engine,
+        browser:browser,
+        system:system
+    };
+}();
+//alert(navigator.userAgent)
+var ua = navigator.userAgent;
+if (window.opera){
+    client.engine.ver = client.browser.ver = window.opera.version();
+    client.engine.opera = client.browser.opera = parseFloat(client.engine.ver);
+}else if(/AppleWebKit\/(\S+)/.test(ua)){
+    client.engine.ver = RegExp["$1"];
+    client.engine.webkit = parseFloat(client.engine.ver);
+    if (/Chrome\/(\S+)/.test(ua)){
+        client.browser.ver = RegExp["$1"];
+        client.browser.chrome = parseFloat(client.browser.ver);
+    }else if(/Version\/(\S+)/.test(ua)){
+        client.browser.ver = RegExp["$1"];
+        client.browser.safari = parseFloat(client.browser.ver);
+    }else{
+        var safariVersion = 1;
+        if(client.engine.webkit < 100){
+            safariVersion = 1;
+        }else if(client.engine.webkit < 312){
+            safariVersion = 1.2;
+        }else if(client.engine.webkit < 412){
+            safariVersion = 1.3;
+        }else{
+            safariVersion = 2;
+        }
+        client.browser.safari = safariVersion;
+    }
+}else if(/KHTML\/(\S+)/.test(ua) || /Konqueror\/([^;])/.test(ua)){
+    client.engine.ver = client.browser.ver = RegExp["$1"];
+    client.engine.khtml = client.browser.konq = parseFloat(client.engine.ver);
+}else if(/rv:([^\)]+)\) Gecko\/\d{8}/.test(ua)){
+    client.engine.ver = RegExp["$1"];
+    client.engine.gecko = parseFloat(client.ver);
+    if(/Firefox\/(\S+)/.test(ua)){
+        client.browser.ver = RegExp["$1"];
+        client.browser.firefox = parseFloat(client.browser.ver);
+    }
+}else if(/MSIE ([^;]+)/.test(ua)){
+    client.engine.ver = client.browser.ver = RegExp["$1"];
+    client.engine.ie = client.browser.ie = parseFloat(client.ver);
+}
+var p = window.navigator.platform;
+client.system.win = p.indexOf('Win') == 0;
+client.system.mac = p.indexOf('Mac') == 0;
+client.system.x11 = p.indexOf('X11') == 0 || p.indexOf('Linux') == 0;
+if(client.system.win){
+    if(/Win(?:dows )?([^do]{2})\s?(\d+\.\d+)?/.text(ua)){
+        if(RegExp['$1'] == "NT"){
+            switch(RegExp["$2"]){
+                case "5.0":
+                    client.system.win = "2000";
+                    break;
+                case "5.1":
+                    client.system.win = "XP";
+                    break;
+                case "6.0":
+                    client.system.win = "Vista";
+                    break;
+                case "6.1":
+                    client.system.win = "7";
+                    break;
+                default:
+                    client.system.win = "NT";
+                    break;
+            }
+        }else if(RegExp['$1'] == "9x"){
+            client.system.win = "ME";
+        }else{
+            client.system.win = RegExp['$1'];
+        }
+    }
+}
+/*alert(window.navigator.vendor);
+alert(window.navigator.vendorSub);
+alert(window.navigator.appCodeName)
+alert(window.navigator.appVersion)
+alert(window.navigator.userAgent)*/
+function hasIEPlugin(name){
+    try{
+        new ActiveXObject(name);
+        return true;
+    }catch(cx){
+        return false;
+    }
+}
+/*if (confirm("are you sure?")){
+    alert("I'm so glad");
+}else{
+    alert("I'm so sorry");
+}
+var result = prompt("what is your name?","haha");
+alert(result);*/
+
+
+
+/*var leftPos = (typeof window.screenLeft == "number") ? window.screenLeft:window.screenX;
+alert(leftPos);*/
+</script>
+
+</body>
+</html>

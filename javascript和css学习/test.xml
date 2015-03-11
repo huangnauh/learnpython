@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/css" href="xml.css"?>
+<xml>
+<book>
+    <maintitle>The book</maintitle>
+    <subtitle>second editon</subtitle>
+    <auther>huang li bi</auther>
+    <pubdate>2004</pubdate>
+</book>
+
+<book>
+    <maintitle>The book</maintitle>
+    <subtitle>second editon</subtitle>
+    <auther>huang li bi</auther>
+    <pubdate>2004</pubdate>
+</book>
+</xml>

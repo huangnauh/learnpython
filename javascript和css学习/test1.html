@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="test1.css"/>
+    <link rel="stylesheet" href="test2.css"/>
+    <style>
+        #myDiv{
+            background-color:blue;
+            width: 100px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+<form method="post" action="">
+    <input type="text" name="username" value="huang"/>
+    <input type="button" value="echo username" onclick="alert(username.value)"/>
+</form>
+<p id="p1"><b>hello</b> world</p>
+<input id="myButton" type="button" value="Click Me"/>
+<a id="myId" href="http://www.baidu.com">baidu</a>
+   <!-- <s:svg xmlns:s="http://www.w3.org/2000/svg" version="1.1"
+         viewBox="0 0 100 100" style="width:100%;height:100%">
+        <rect x="0" y="0" width="100" height="100" style="fill:yellowgreen"></rect>
+    </s:svg>-->
+    <script>
+        function foo(){
+            alert("huang");
+            /*with(document){
+                with(this.forms[0]){
+                    with(this){
+                        alert(childNodes);
+                    }
+                }
+            }*/
+        }
+        function showMessage(){
+            alert(document);
+            with(document){
+                with(forms[0]){
+                   with(this){
+                       alert(childNodes[1].value);
+                   }
+                }
+            }
+        }
+        var btn = document.getElementById("myButton");
+        var aId = document.getElementById("myId");
+        aId.onclick = function(event){
+            event.preventDefault();
+        }
+        /*btn.onclick = function(){
+            alert("helloworld");
+        }
+        btn.addEventListener("click",function(){
+            alert(this.id);
+        },false);
+        btn.addEventListener("click",function(){
+            alert("hello");
+        },false);*/
+
+        var EventUtil = {
+            addHandler:function(element,type,handler){
+                if(element.addEventListener){
+                    element.addEventListener(type,handler,false);
+                }else if(element.attachEvent){
+                    element.attachEvent("on"+type,handler);
+                }else{
+                    element["on"+type] = handler;
+                }
+            },
+            getEvent: function(event){
+                return event ? event : window.event;
+            },
+            getTarget: function(event){
+                return event.target || event.srcElement;
+            },
+            preventDefault: function(event){
+                if(event.preventDefault){
+                    event.preventDefault();
+                }else{
+                    event.returnValue = false;
+                }
+            },
+            stopPropagation: function(event){
+                if(event.stopPropagation){
+                    event.stopPropagation();
+                }else{
+                    event.cancelBubble = true;
+                }
+            },
+            removeHandler:function(element,type,handler){
+                if(element.removeEventListener){
+                    element.removeEventListener(type,handler,false);
+                }else if(element.detachEvent){
+                    element.detachEvent("on"+type,handler);
+                }else{
+                    element["on"+type] = null;
+                }
+            }
+        };
+        document.body.addEventListener("load",function(event){
+            alert("loaded");
+        },false);
+
+        /*EventUtil.addHandler(document.body,"load",function(event){
+            alert("loaded");
+        });*/
+        /*var handler=function(){
+            alert(this == event.currentTarget);
+            alert(this == event.target);
+        };
+        EventUtil.addHandler(btn,"click",handler);*/
+        /*document.body.onclick = function(event){
+            alert(event.currentTarget === document.body);
+            alert(this === document.body);
+            alert(event.target === document.getElementById("myButton"));
+        }*/
+        /*document.body.addEventListener("click",function(event){
+            alert(event.currentTarget === document.body);
+            alert(this === document.body);
+            alert(event.target === document.getElementById("myButton"));
+        },false);*/
+        /*document.body.attachEvent("onclick",function(event){
+         alert(event.srcElement);
+         });*/
+        var handler = function(event){
+            if (event.type === "click") {
+                alert("clicked");
+                event.stopPropagation();
+            } else if (event.type === "mouseover") {
+                event.target.style.backgroundColor = "yellowgreen";
+            } else if (event.type === "mouseout") {
+                event.target.style.backgroundColor = "blue";
+            }
+        };
+        var handler1 = function(event){
+            alert("haha "+event.eventPhase);
+        };
+        /*btn.onclick = function(){
+            var event = window.event;
+            alert(event.type);
+        };*/
+        /*document.body.addEventListener("click",handler1,true);
+        document.body.onclick= handler1;
+        btn.onmouseout = handler;*/
+        /*document.body.onclick = function(){
+            alert("body onclick");
+        }*/
+        /*btn.attachEvent("onclick",function(){
+            alert("yujia");
+        })*/
+        var div1=document.createElement("div");
+        div1.id = "myDiv";
+        div1.setAttribute("class","box");
+        div1.innerText = "abcdef";
+        div1.style.backgroundColor = "red";
+        /*div1.style.width = "100px";
+        div1.style.height = "100px";*/
+        div1.style.border = "1px solid black";
+//        alert(div1.style.cssText);
+        document.body.appendChild(div1);
+        var mystyles = [];
+        for(var i= 0,len=div1.style.length;i<len;i++){
+            var prop = div1.style.item(i)
+            var value = div1.style.getPropertyValue(prop)
+            mystyles.push(prop + ":" + value/*.cssText +"(" + value.cssValueType + ")"*/);
+        }
+//        alert(mystyles.join('\n'));
+        var sheet = null;
+        var len=document.styleSheets.length;
+//        alert(len);
+        /*for(var i= 0;i<len;i++){
+            sheet = document.styleSheets[i];
+            alert(sheet.cssRules[0].cssText);
+        }*/
+//        alert(document.implementation.hasFeature("Traversal","2.0"));
+//        alert(typeof document.createNodeIterator == "function");
+//        alert(typeof document.createTreeWalker == "function");
+
+
+        var sheet = document.styleSheets[0];
+//        alert(sheet.cssText);
+        sheet.insertRule("#myDiv{margin:20px;}",1);
+//        alert(sheet.cssRules[1].cssText);
+//        alert(sheet.cssRules[1].style.cssText);
+        var computedStyle = document.defaultView.getComputedStyle(div1,null) || div1.currentStyle;
+/*        alert(computedStyle.backgroundColor);
+        alert(computedStyle.border);*/
+        /*var filter1 = {
+            acceptNode: function(node){
+                return node.tagName.toLowerCase() == "div" ? NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_SKIP;
+            }
+        };*/
+       /* var filter = function(node){
+            return node.tagName.toLowerCase() == "div" ?
+                    NodeFilter.FILTER_ACCEPT:
+                    NodeFilter.FILTER_SKIP;
+        };
+        var iterator = document.createNodeIterator(document.body,NodeFilter.SHOW_ELEMENT,filter,false);
+        var walker = document.createTreeWalker(document.body,NodeFilter.SHOW_ELEMENT,filter,false);*/
+/*        var node = iterator.nextNode();
+        while(node !== null){
+            alert(node.tagName);
+            node = iterator.nextNode();
+        }
+        var node = walker.firstChild();
+        while(node !== null){
+            alert(node.tagName);
+            node = walker.nextSibling();
+        }*/
+        var range1 = document.createRange();
+        var range2 = document.createRange();
+        var p1 = document.getElementById("p1");
+        var helloNode = p1.firstChild.firstChild;
+        var worldNode = p1.lastChild;
+        var rangeHW = document.createRange();
+        range1.selectNodeContents(p1);
+        range2.selectNodeContents(p1);
+        range2.setEndBefore(p1.lastChild);
+        rangeHW.setStart(helloNode,2);
+        rangeHW.setEnd(worldNode,3);
+       /* alert(range1.compareBoundaryPoints(Range.START_TO_START,range2));
+        alert(range1.compareBoundaryPoints(Range.END_TO_END,range2));*/
+        /*var span = document.createElement("span");
+        var fragment = rangeHW.extractContents();
+        span.style.backgroundColor = "yellow";
+        span.appendChild(fragment);
+        span.appendChild(document.createTextNode("surrended text"));
+        rangeHW.insertNode(span);
+        rangeHW.insertNode(span);*/
+//        alert(p1.innerHTML);
+       /* var fragment = rangeHW.extractContents();
+        p1.parentNode.appendChild(fragment);*/
+        /*range1.selectNode(p1);
+        range2.selectNodeContents(p1);*/
+        var p1Index = -1;
+        for(var i= 0,len=p1.parentNode.childNodes.length;i<len;i++){
+            if(p1.parentNode.childNodes[i] == p1){
+                p1Index = i;
+                break;
+            }
+        }
+        range1.setStart(p1.parentNode,p1Index);
+        range1.setEnd(p1.parentNode,p1Index+1);
+        range2.setStart(p1,0);
+        range2.setEnd(p1,p1.childNodes.length);
+       /* alert(range1.startContainer);
+        alert(range2.endOffset);*/
+
+        function foo(operation, key, data, src, dst){
+            if(operation == 1){
+                function bar(){
+                    ;
+                }
+                dst.setUserData(key,data,bar);
+            }
+        }
+        /*alert(document.implementation.hasFeature("CSS","2.0"));
+        alert(document.implementation.hasFeature("CSS2","2.0"));*/
+  /*      var iframe = document.getElementById("myIframe");
+        var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;*/
+        /*alert(foo);
+        div1.setUserData("name","huang",foo);
+
+        alert(div1.getUserData("name"));
+        var newDiv = div1.cloneNode(true);
+        alert(newDiv.getUserData("name"));*/
+    /*    var div2=document.createElement("div");
+        div2.setAttribute("class","box");
+        alert(div2.isSameNode(div1));
+        alert(div1.isEqualNode(div2));*/
+        /*var html = document.documentElement;
+        alert(html.localName);1
+        alert(html.namespaceURI);
+        var avg = document.body.getElementsByTagNameNS("http://www.w3.org/2000/svg","s:svg");
+        alert(avg.length);
+*//*        alert(avg.namespaceURI);
+        alert(avg.prefix);*//*
+        var parentWindow = document.defaultView || document.parentWindow;*/
+//        alert(parentWindow);
+
+    </script>
+</body>
+</html>

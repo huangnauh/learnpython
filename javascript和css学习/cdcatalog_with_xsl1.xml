@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Edited with XML Spy v2007 (http://www.altova.com) -->
+<?xml-stylesheet type="text/xsl" href="b.xsl"?>
+<abc>
+<def>
+<catalog>
+	<cd id="huang1">
+		<title id="huang">Empire Burlesque</title>
+		<artist>Bob Dylan</artist>
+		<country>USA</country>
+		<company>Columbia</company>
+		<price>10.90</price>
+		<year>1985</year>
+	</cd>
+	<cd id="yujia1">
+		<title id="yujia">Hide your heart</title>
+		<artist>Bonnie Tyler</artist>
+		<country>UK</country>
+		<company>CBS Records</company>
+		<price>9.90</price>
+		<year>1988</year>
+	</cd>
+</catalog>
+</def>
+</abc>

@@ -1,0 +1,158 @@
+html {
+    color:black;
+}
+#toolbar{
+    color:white;
+    background: blue;
+}
+#toolbar a{
+    color:inherit;
+}
+body{
+    font-family: TimesNR,serif;
+}
+h1,h2,h3,h4{
+    font-family: Arial,sans-serif;
+}
+code,pre,tt,span.input{
+    font-family: monospace;
+}
+p.signature{
+    font:italic 500 2em/1.2 "Tw Cen MT Condensed",serif;
+}
+h1 {
+	color:maroon;
+/*    font:italic 2em/1.2 Times,serif;
+    font: 20px Helvetica;
+    text-decoration:underline overline;
+    background:silver;
+    border: 1px solid green;
+    margin-bottom: 0;
+    padding: 5px;*/
+}
+/*静态伪类*/
+a:link{
+    /*color:blue;*/
+    text-decoration: none;
+}
+a:visited{
+    /*color:silver;*/
+    text-decoration: none;
+}
+/*动态伪类*/
+a:hover {
+    color: green;
+    font-size: 20px;
+    text-decoration: underline;
+
+}
+a:active{
+    color:yellow;
+    text-decoration: underline;
+}
+input:focus{
+    background: silver;
+    font-weight: bold;
+}
+p:first-child {
+    /*font-weight: bold;*/
+    text-transform: uppercase;
+}
+h2:first-letter{
+   font-size:200%;
+}
+h2:before{
+    content:"}}";
+    color:silver;
+}
+h2:after{
+    content:" the end;";
+    color:silver;
+}
+/*p:first-line{
+    font-size:200%;
+}*/
+h1 *:hover{
+    background: cornflowerblue;
+}
+/*选择相邻兄弟元素*/
+h1 + p{
+    color:indianred;
+}
+li + li {
+    background: #123;
+}
+/*后代选择器,上下文选择器*/
+h1 em{
+    color:yellow;
+}
+/*选择子元素*/
+/*ul.table1 dd > em {
+    color: red;
+}*/
+
+ul li dd em{
+    color:yellowgreen;
+}
+
+/*XHTML层次要求：行内元素可以继承块元素，但反过来不行
+但CSS没有这种限制*/
+p {
+    display: block;
+}
+
+em{
+    display: inline;
+    color:lightskyblue;
+}
+/*class选择器*/
+.warning{
+    font: 40px Helvetica;
+    font-weight: bold;
+}
+/*.urgent{
+    font-style: italic;
+}*/
+.warning.urgent{
+    border: 1px solid green;
+    background: darkolivegreen;
+}
+/*ID选择器会使用一次，且只有一次
+ID选择器不能结合使用*/
+#first-para{
+    font-weight:bold;
+}
+
+p[class][title] {
+    background:blueviolet;
+}
+
+/*根据具体属性值选择器，是一个完全串匹配，和class选择器不同*/
+/*根据部分属性值选择器（子串匹配属性选择器）*/
+p[class~="huang"] {
+    background:chartreuse;
+}
+p[class="huang"] {
+    background:orangered;
+}
+p[foo*="bar"]{
+    background:deepskyblue;
+}
+p[foo^="bar"]{
+    background:cadetblue;
+}
+p[foo$="bar"]{
+    background:lightgoldenrodyellow;
+}
+/*特定属性选择器(这种属性选择器最常见的用途是匹配语言值)*/
+*[lang|='en']{
+    color:cadetblue;
+}
+/*伪类比属性选择器健壮的原因：语言信息可以从很多来源dedao
+而且其中一些可能在元素之外*/
+/**:lang(fr){
+    font-style: italic;
+}*/
+/*伪类选择器*/
+
+

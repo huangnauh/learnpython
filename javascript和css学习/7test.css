@@ -1,0 +1,154 @@
+body{
+    font-size:16px;
+    width:800px;
+}
+/*div{
+    line-height: 1;
+}*/
+/*div{
+    width:67%;
+    border:3px solid black;
+    *//*padding:80px;*//*
+    background: silver;
+}
+div>p{
+    font-size:20px;
+    margin-left:20px;
+    margin-right:-50px;
+    border:3px solid black;
+    background: cornflowerblue;
+    *//*line-height: 1em;*//*
+}*/
+img.tall{
+    vertical-align: bottom;
+}
+img.short{
+    vertical-align: baseline;
+}
+span.up{
+    vertical-align: 100%;
+}
+span.down{
+    vertical-align: -100%;
+}
+span.raise{
+    vertical-align:super;
+    font-size : 50%;
+}
+span.lower{
+    vertical-align:sub;
+    font-size : 50%;
+}
+
+/*div#outer{
+    width: 200px;
+    text-align:left;
+}
+div#inner{
+    text-indent:10%;
+}
+p{
+    width:100px;
+    text-align:right;
+}*/
+/*p{
+    text-indent : 1%;
+    *//*padding-left: 2em;*//*
+}*/
+p.two{
+    word-spacing: 0.5em;
+}
+p.three{
+    word-spacing: -0.5em;
+}
+p.four{
+    /*width:200px;*/
+    word-spacing:normal;
+    white-space:pre-line;
+}
+
+p.five{
+    letter-spacing: 0.2em;
+}
+p.six{
+    letter-spacing:-0.2em;
+}
+p.seven{
+    letter-spacing:0.2em;
+}
+p.seven>span{
+    font-size:50%;
+    letter-spacing:0.2em;
+}
+p.eight{
+    letter-spacing:0.2em;
+}
+p.eight>span{
+    font-size:50%;
+}
+p.nine{
+    text-decoration: overline;
+    color:yellowgreen;
+}
+p.nine>span{
+    color:blueviolet;
+    vertical-align:100%;
+    text-decoration: none;
+}
+p.ten{
+    color : green;
+    text-shadow:green 2px 2px 2px;
+}
+td{
+    white-space: nowrap;
+}
+.a{
+    color:red;
+}
+
+.b{
+    color:blue;
+}
+.a.b{
+    color:green;
+}
+.b.a{
+    color:yellow;
+}
+ul{
+    margin-top:15px;
+    margin-bottom:15px;
+}
+li{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+div.test{
+    background: yellowgreen;
+    width:800px;
+}
+/*
+div>div{
+    */
+/*display: inline-block;*//*
+
+    */
+/**//*
+
+    text-align:right;
+}
+div.left{
+    background: blue;
+    float:left;
+    width:150px;
+}
+div.center{
+    background: red;
+    float:left;
+    width:auto;
+}
+div.right{
+    background: blue;
+    float:left;
+    width:150px;
+}*/

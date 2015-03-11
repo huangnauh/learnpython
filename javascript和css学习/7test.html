@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="7test.css"/>
+</head>
+<body>
+<div data-app="12345" data-name="huanglibo"></div>
+<div class="test">
+<div class="left">123</div>
+<div class="center">456 test this is a test this is a test </div>
+<div class="right">789 this is a test this is a test</div>
+</div>
+<!--<div>
+    <style>body{
+        background: deepskyblue;}</style></div>-->
+<!--<p style="margin-bottom:-10px;background: yellowgreen;">this is a p</p>&lt;!&ndash;&ndash;&gt;-->
+<!--<h1 style="margin-top:-5px;background: blue;">heading</h1>-->
+<!--style="margin-bottom:-15px"-->
+<ul>
+    <li style="margin-bottom:20px">a list</li>
+    <li style="margin-bottom:20px">another list</li>
+</ul>
+<h1 style="margin-top:-15px">heading</h1>
+<p style="margin-bottom:auto;width:50px">this is paragraph this is paragraph</p>
+<div style="background:blue"><p style="margin-top:-2em;">hahah</p>div</div>
+<p style="margin-bottom:auto;width:50px">this is paragraph this is paragraph</p>
+<div style="background:blue"><p style="margin-bottom:-2em;">hahah</p>div</div>
+<p>this is paragraph</p>
+<ul style="border-bottom:1px solid">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li>11</li>
+</ul>
+<ul>
+    <li>21</li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<!--<div style="/*height:6em;*/width:50%;background: gold;">&lt;!&ndash;div div div&ndash;&gt;
+    <p style="margin-top:20%;height:50%;background: blue;">xxxx</p>
+</div>-->
+<div style="height:auto;margin-top:2em;background: gold;"><!--div div div-->
+    <p style="margin-top:2em;padding-bottom:1px;background: blue;">xxxx</p>
+</div>
+<div style="height:auto;border-top:1px solid;border-bottom:1px solid;padding-top:1em;background: gold;"><!--div div div-->
+    <p style="margin-top:1em;margin-bottom:1em;background: blue;">xxxx</p>
+</div>
+<!--<div class="a">text1</div>
+<div class="b">text2</div>
+<div class="a b">text3</div>
+<div class="b a">text4</div>-->
+<p style="width:50%;margin-top:20%;margin-left:20%;background: blue;">xxxx</p>
+<p style="height:100px;width:100px;background:yellow;margin-bottom:40px;margin-left:40px;margin-top:40px;"> this is a paragraph this is a paragraph this is a paragraph</p>
+<!--<img style="display:block;width:400px;margin:0;" src="cover.jpg" alt=""/>-->
+<p style="text-align:center;width:auto;padding:50px;margin-left:100px;margin-right:40px;border-style:solid;
+background: blueviolet;">wideness12334
+    <br/>wideness
+    <br/>wideness <br/>wideness</p>
+
+<p style="width:200px;
+background: blueviolet;">wideness wideness wideness wideness</p>
+<!--<div id="outer">-->
+    <div id="inner">This fitst line of the DIVhahaha This fitst line of the DIV This fitst line of the DIV This fitst line of the DIV This fitst line of the DIV This fitst line of the DIV This fitst line of the DIV This fitst line of the DIV
+        <p>this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph this is a paragraph</p>
+    </div>
+<!--</div>-->
+<p class="one">this is one paragraph
+    <br />
+    this is a 2<em>larger</em> <span>smaller</span></p>
+<p class="two">this is 2 paragraph <span class="raise">super <em>text</em> scripted</span> and <span class="lower">sub scripted</span> text</p>
+<p class="three">This is 3 paragraph <em>larger</em> <span>smaller</span></p>
+<p class="four">This is 4 paragraph dfdf  beyond what is necessary,Never increase, beyond what is necessary, the number of entities required to explain anything
+
+
+    dfsfd       fdsfdsf
+dfd    sfdsfdsf</p>
+<p class="five">this is 5 paragraph
+<!--    <img class="tall" src="cover.jpg" alt="tall" width="200px" height="400px"/>
+    <img class="short" src="cover.jpg" alt="short" width="400px" height="200px"/>-->
+</p>
+<p class="six">this is 6 paragraph<span class="up">larger</span>text<span class="down">smaller</span>text</p>
+<p class="seven">this is 7 paragraph<span>smaller</span> this <em>larger</em> </p>
+<p class="eight">this is 8 paragraph<span>smaller</span> this </p>
+<p class="nine">this is 9 paragraph<span>smaller</span>this is</p>
+<p class="ten eleven twelve thirteen">this is 0 paragraph</p>
+
+<table>
+    <tr id="o">
+        <th>apple</th>
+        <th>orange</th>
+        <th>banana</th>
+    </tr>
+    <tr id="p">
+        <td>Never increase, beyond what is necessary, the number of entities required to explain anything</td>
+        <td>Never increase, beyond what is necessary, the number of entities required to explain anything</td>
+        <td>30</td>
+    </tr>
+    <tr id="q">
+        <td>11 12</td>
+        <td>22</td>
+        <td>33</td>
+    </tr>
+</table>
+<script>
+    var pos = -1;
+    var ten = document.getElementsByClassName("ten")[0];
+    var classNames = ten.className.split(/\s+/);
+    for(var i= 0,len=classNames.length;i<len;i++){
+        if(classNames[i] == "twelve"){
+            pos = i;
+            break;
+        }
+    }
+    classNames.splice(i,1);
+    ten.className = classNames.join(' ');
+    ten.classList.toggle("ten");
+    ten.classList.toggle("five");
+//    alert(ten.className);
+/*    alert(document.defaultCharset);
+    alert(document.charset);*/
+    var div = document.getElementById("myDiv");
+//    div.innerHTML = "<style>body{background: darkred;}</style>"
+//    div.removeChild(div.firstChild);
+/*    if (document.compatMode == "CSS1Compat"){
+        alert("standards mode");
+    }else if (document.compatMode == "BackCompat"){
+        alert("Quirks Mode");
+    }else{
+        alert("else");
+    }*/
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>examlpe 2</title>
+</head>
+<body name="huang">
+<div id="t" name="aaa"><span>a</span><span>b</span><span>c</span></div>
+<div id="tt" class="bd" title="Body text">bb</div>
+<div id="ttt">abcd efdg jfidsn</div>
+<div id="mydiv"><!--a comment--></div>
+<a name='a1' href="http://www.baidu.com">baidu</a>
+<a name='a2' href="http://www.163.com">163</a>
+<a name='a3' href="http://www.126.com">126</a>
+<ul>
+    <li><input name="color" id="colorRed" value="red" type="radio"/><label for="colorRed">Red</label></li>
+    <li><input name="color" id="colorGreen" value="green" type="radio"/><label for="colorGreen">Green</label></li>
+    <li><input name="color" id="colorBlue" value="blue" type="radio"/><label for="colorBlue">Blue</label></li>
+</ul>
+<table border="1" width="100%">
+    <thead>
+    <tr>
+        <th>Month</th>
+        <th>Saving</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <td>Sum</td>
+        <td>$180</td>
+    </tr>
+    </tfoot>
+    <tbody>
+    <tr>
+        <td>January</td>
+        <td>$100</td>
+    </tr>
+    <tr>
+        <td>February</td>
+        <td>$80</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+function loadtable1(){
+    var table = document.createElement("table");
+    table.border = 1;
+    table.width = "100%";
+    var thead = document.createElement("thead");
+    table.appendChild(thead);
+    var row = document.createElement('tr');
+    thead.appendChild(row);
+    var Month = document.createElement('th');
+    Month.appendChild(document.createTextNode("Month"))
+    row.appendChild(Month);
+    var Saving = document.createElement('th');
+    Saving.appendChild(document.createTextNode("Saving"))
+    row.appendChild(Saving);
+//等等
+}
+function loadtable(){
+    var table = document.createElement("table");
+    table.border = 1;
+    table.width = "100%";
+    var tbody = document.createElement("tbody");
+    table.appendChild(tbody);
+    tbody.insertRow(0);
+    tbody.rows[0].insertCell(0);
+    tbody.rows[0].insertCell(1);
+    tbody.rows[0].cells[0].appendChild(document.createTextNode("January"));
+    tbody.rows[0].cells[1].appendChild(document.createTextNode("$100"));
+    tbody.insertRow(1);
+    tbody.rows[1].insertCell(0);
+    tbody.rows[1].insertCell(1);
+    tbody.rows[1].cells[0].appendChild(document.createTextNode("February"));
+    tbody.rows[1].cells[1].appendChild(document.createTextNode("80"));
+    document.body.appendChild(table);
+}
+loadtable();
+function loadScriptString(code){
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    try{
+        script.appendChild(document.createTextNode(code));
+    }catch (ex){
+        script.text = code;
+    }
+    document.body.appendChild(script);
+}
+function loadStyles(url){
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(link);
+}
+function loadStylesString(css){
+    var style = document.createElement("style");
+    style.type = "text/css";
+    try{
+        style.appendChild(document.createTextNode(css));
+    }catch (ex){
+        style.stylesheet.cssText = css;
+    }
+    var head = document.getElementsByTagName("head")[0];
+    head.appendChild(style);
+}
+/*loadScriptString("function sayHi(){alert('hi');}")
+loadStyles("/learnjs/styles.css");
+loadStylesString("body{background-color:red}");*/
+var arrayOfNode = Array.prototype.slice.call(document.getElementById('t').childNodes,0);
+var d = document.getElementById('tt').firstChild;
+document.write("<strong>"+(new Date()).toString()+"</strong>");
+var textd = document.getElementById('ttt').firstChild;
+textd.nodeValue = "some <other></other> message";
+textd.appendData(" now append");
+textd.deleteData(0,5);
+textd.insertData(0,"some ");
+textd.replaceData(0,5,"another some ");
+textd.splitText(7);
+document.getElementById('ttt').normalize();
+//alert(document.getElementById('ttt').childNodes.length)
+var element = document.createElement('div');
+element.className = "message";
+var textNode = document.createTextNode("hello world");
+element.appendChild(textNode);
+document.body.appendChild(element);
+var div = document.getElementById("mydiv");
+var comment = div.firstChild;
+/*alert(comment.data);
+alert(document.doctype.name);*/
+/*alert(textd.nodeValue);
+textd = document.getElementById('ttt').childNodes[1];
+alert(textd.nodeValue);*/
+//alert(document.getElementsByName('color').length)
+/*alert(document.documentElement);
+alert(document.title)
+alert(document.doctype);
+alert(document.URL);
+alert(document.domain);
+alert(document.referrer);*/
+var as = document.getElementsByTagName('a');
+/*alert(as.namedItem('a2'));
+alert(as['a3']);*/
+var d = document.getElementById('t');
+/*document.write(d.nextSibling.innerHTML);
+document.write(d.previousSibling.innerHTML);*/
+//alert(document.getElementById('ttt').hasChildNodes())
+
+function outputAttributes(element){
+    var pairs = new Array();
+    var attrName,attrValue;
+    for(var i= 0,len=element.attributes.length;i<len;i++){
+        attrName = element.attributes[i].nodeName;
+        attrValue = element.attributes[i].nodeValue;
+        pairs.push(attrName + "=\"" + attrValue + "\"");
+    }
+    alert(pairs.join(''));
+}
+//outputAttributes(d);
+var d = document.getElementById('t').firstChild;
+var newd = document.createElement(d.nodeName);
+newd.innerHTML = 'd';
+document.getElementById('t').replaceChild(newd,d);
+var where = document.getElementById('t').lastChild;
+var newd = document.createElement(where.nodeName);
+newd.innerHTML = 'e';
+document.getElementById('t').insertBefore(newd,where);
+var dt = document.getElementById('t');
+/*var what = dt.cloneNode(true).innerHTML;
+document.getElementById('ttt').innerHTML = what;
+var where = document.getElementById('ttt').lastChild;*/
+//alert(where.innerHTML);
+var a = null;
+
+
+
+</script>
+</html>

@@ -1,0 +1,17 @@
+h1 {
+	color:maroon;
+    font:italic 2em Times,serif;
+    text-decoration:underline overline;
+    background:silver;
+    border: 1px solid green;
+    margin-bottom: 0;
+    padding: 5px;
+}
+/*XHTML层次要求：行内元素可以继承块元素，但反过来不行
+但CSS没有这种限制*/
+p {
+    display: inline;
+}
+em{
+    display: block;
+}

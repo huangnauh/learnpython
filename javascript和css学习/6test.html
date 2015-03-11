@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <!--<style type="text/css">&lt;!&ndash;
+    @import url(/learnjs/1.css);
+    p em{color:mediumblue;}
+    body {background: beige;}
+    &ndash;&gt;</style>-->
+    <link rel="stylesheet" href="6test.css" type="test/css"/>
+</head>
+<body>
+<p class="one">this is a paragraph
+    <br />
+    this is a 2<em>larger <span>smaller</span></em></p>
+<p class="two">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="three">This is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="four">This is a paragraph <strong>strong</strong><em>larger</em> <span>smaller</span></p>
+<p class="five">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="six">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="seven">this is a paragraph <em>larger</em> <span>smaller</span></p>
+<p class="eight">this is a paragraph</p>
+<p class="nine">this is a paragraph</p>
+<p class="ten">this is a paragraph</p>
+<h1 id="page-title">Greeting <em>yes,this is em</em> <small>small</small></h1>
+<p class="aside">It's a fine way to start a day <em>this is test</em></p>
+<p>There are many ways to greet a person <small>small</small></p>
+<h2 style="color :green;">Salutations Small</h2>
+<p>There is noting finer than a hearty welcome from </p>
+<p class="aside">a thick and juicy</p>
+<p class="empty">def<em>abc</em></p>
+<p id="toolbar">abc<a href="www.aol.com">aol</a></p>
+<div>
+<ul>one
+    <li>li1
+        <ul>two1
+            <li>li2
+                <ul>three11
+                    <li>li3</li>
+                    <li>li3</li>
+                </ul>
+            </li>
+            <li>li2
+                <ul>three12
+                    <li>li3</li>
+                    <li>li3</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>li1
+        <ul>two2
+            <li>li2
+                <ul>three21
+                    <li>li3</li>
+                    <li>li3</li>
+                </ul>
+            </li>
+            <li>li2
+                <ul>three22
+                    <li>li3</li>
+                    <li>li3</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>
+<table>
+    <tr id="o">
+        <th>apple</th>
+        <th>orange</th>
+        <th>banana</th>
+    </tr>
+    <tr id="p">
+        <td>10</td>
+        <td>20</td>
+        <td>30</td>
+    </tr>
+    <tr id="q">
+        <td>11</td>
+        <td>22</td>
+        <td>33</td>
+    </tr>
+</table>
+<script>
+var empty = document.getElementsByClassName("empty")[0];
+var body = document.body;
+/*alert(empty.childElementCount)
+alert(empty.firstElementChild.innerHTML)*/
+var child = body.firstElementChild;
+while(child != body.lastElementChild){
+    if(child.className != ""){
+        //alert(child.className);
+    }
+    child = child.nextElementSibling;
+}
+var a=0;
+</script>
+</body>
+</html>
