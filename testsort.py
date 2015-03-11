@@ -11,6 +11,30 @@ def bubble_sort(seq):
 			if seq[j-1] > seq[j]:
 				seq[j-1],seq[j] = seq[j],seq[j-1]
 				flag = j
+                
+def BubbleSort1(seq):
+	length = len(seq)
+	flag = True
+	i = length
+	while flag:
+		flag = False
+		for j in range(1,i):
+			if  seq[j-1] > seq[j]:
+				seq[j-1],seq[j] = seq[j],seq[j-1]
+				flag = True
+		i -= 1
+        
+def BubbleSort2(seq):
+	length = len(seq)
+	flag = length
+	i = length
+	while flag:
+		i = flag
+		flag=0
+		for j in range(1,i):
+			if  seq[j-1] > seq[j]:
+				seq[j-1],seq[j] = seq[j],seq[j-1]
+				flag = j
 				
 def selection_sort(seq):
 	n = len(seq)
@@ -22,6 +46,23 @@ def selection_sort(seq):
 		if mindex > i:
 			seq[i],seq[mindex] = seq[mindex], seq[i]
 
+def SelectSort(seq):
+	length = len(seq)
+	for i in range(length):
+		mini = min(seq[i:])
+		if seq[i] > mini:
+			j = seq.index(mini,i)
+			seq[i],seq[j]=seq[j],seq[i]
+
+def SelectSort1(seq):
+	length = len(seq)
+	for i in range(length):
+		minPos = i
+		for j in range(i+1,length):
+			if seq[minPos] > seq[j]:
+				minPos = j
+		seq[i],seq[minPos]=seq[minPos],seq[i]            
+            
 def insertion_sort(seq):
 	n = len(seq)
 	for i in range(1,n):
@@ -31,7 +72,19 @@ def insertion_sort(seq):
 			seq[j] = seq[j-1]
 			j -= 1
 		seq[j] = tmp
-		
+        
+def Insertsort(seq):
+	length = len(seq)
+	for i in range(1,length):
+		tmp = seq[i]
+		for j in range(i,0,-1):
+			if seq[j-1] > tmp:
+				seq[j] = seq[j-1]
+			else:
+				j=j+1
+				break
+		seq[j-1] = tmp	
+        
 def shellsort(seq):
 	n = len(seq)
 	inc=0
@@ -46,8 +99,44 @@ def shellsort(seq):
 				j -= inc
 			seq[j] = tmp
 		inc //= 3
-
-
+        
+def ShellSort(seq):
+	length = len(seq)
+	inc=0
+	while inc < length/3:
+		inc=inc*3+1
+	print inc
+	while inc:
+		for i in range(inc,length):
+			tmp=seq[i]
+			for j in range(i,0,-inc):
+				if seq[j-inc] > tmp:
+					seq[j] = seq[j-inc]
+				else:
+					j+=inc
+					break
+			seq[j-inc] = tmp
+		inc//=3
+        
+def merge_sort(seq):
+    n = len(seq)
+    if n <=1:
+        return seq
+    mid = n//2
+    left = mergesort(seq[:mid])
+    right = mergesort(seq[mid:])
+    def merge(left,right):
+        merged = []
+        while left and right:
+            merged.append(left.pop(0) if left[0] <= right[0] else right.pop(0))
+        while left:
+            merged.append(left.pop(0))
+        while right:
+            merged.append(right.pop(0))
+        return merged
+    return merge(left,right)
+    
+        
 def mergesort(seq):
 	n = len(seq)
 	if n > 1:
@@ -118,7 +207,44 @@ def mergesort(seq):
 		merge(left,right)
 	return count[0]
 
-		
+def MergeSort(seq):
+	length = len(seq)
+	if length <= 1:
+		return seq
+	mid = (length/2)
+	left = MergeSort(seq[:mid])
+	right = MergeSort(seq[mid:])
+	#print "left right ",mid
+	return merge(left,right)
+
+def merge(left,right):
+	result=[]
+	i,j = 0,0
+	lenleft = len(left)
+	lenright = len(right)
+	while i < lenleft and j < lenright:
+		if left[i] <= right[j]:
+			result.append(left[i])
+			i+=1
+		else:
+			result.append(right[j])
+			j+=1
+	result+=left[i:]
+	result+=right[j:]
+	#print result
+	return result    
+
+def iter_mergersort(seq):
+    q = []
+    for i in range(seq):
+        q.append([i])
+    while len(q)>1:
+        q.append(merge(q.pop(0),q.pop(0)))
+    return q.pop(0)
+
+
+        
+        
 def qsort(seq):
 	def qsort_helper(seq,first,last):
 		def partition(seq,first,last):
@@ -179,74 +305,8 @@ def select_i_less(seq,i):
 	if 0 < i <= len(seq):
 		return select_i_less_helper(seq,0,len(seq)-1,i-1)
 	return -1
-			
-			
-			
-			
-			
-			
 
-def BubbleSort(seq):
-	length = len(seq)
-	for i in range(length):
-		for j in range(1,length-i):
-			if  seq[j-1] > seq[j]:
-				seq[j-1],seq[j] = seq[j],seq[j-1]
-
-def BubbleSort1(seq):
-	length = len(seq)
-	flag = True
-	i = length
-	while flag:
-		flag = False
-		for j in range(1,i):
-			if  seq[j-1] > seq[j]:
-				seq[j-1],seq[j] = seq[j],seq[j-1]
-				flag = True
-		i -= 1
-					
-def BubbleSort2(seq):
-	length = len(seq)
-	flag = length
-	i = length
-	while flag:
-		i = flag
-		flag=0
-		for j in range(1,i):
-			if  seq[j-1] > seq[j]:
-				seq[j-1],seq[j] = seq[j],seq[j-1]
-				flag = j
-
-def Insertsort(seq):
-	length = len(seq)
-	for i in range(1,length):
-		tmp = seq[i]
-		for j in range(i,0,-1):
-			if seq[j-1] > tmp:
-				seq[j] = seq[j-1]
-			else:
-				j=j+1
-				break
-		seq[j-1] = tmp
-
-def ShellSort(seq):
-	length = len(seq)
-	inc=0
-	while inc < length/3:
-		inc=inc*3+1
-	print inc
-	while inc:
-		for i in range(inc,length):
-			tmp=seq[i]
-			for j in range(i,0,-inc):
-				if seq[j-inc] > tmp:
-					seq[j] = seq[j-inc]
-				else:
-					j+=inc
-					break
-			seq[j-inc] = tmp
-		inc//=3
-		
+#不是原地    
 def qsort(seq):
 	if seq==[]:
 		return []
@@ -258,50 +318,10 @@ def qsort(seq):
 		
 		
 		
-def SelectSort(seq):
-	length = len(seq)
-	for i in range(length):
-		mini = min(seq[i:])
-		if seq[i] > mini:
-			j = seq.index(mini,i)
-			seq[i],seq[j]=seq[j],seq[i]
 
-def SelectSort1(seq):
-	length = len(seq)
-	for i in range(length):
-		minPos = i
-		for j in range(i+1,length):
-			if seq[minPos] > seq[j]:
-				minPos = j
-		seq[i],seq[minPos]=seq[minPos],seq[i]
 			
 
-def MergeSort(seq):
-	length = len(seq)
-	if length <= 1:
-		return seq
-	mid = (length/2)
-	left = MergeSort(seq[:mid])
-	right = MergeSort(seq[mid:])
-	#print "left right ",mid
-	return merge(left,right)
 
-def merge(left,right):
-	result=[]
-	i,j = 0,0
-	lenleft = len(left)
-	lenright = len(right)
-	while i < lenleft and j < lenright:
-		if left[i] <= right[j]:
-			result.append(left[i])
-			i+=1
-		else:
-			result.append(right[j])
-			j+=1
-	result+=left[i:]
-	result+=right[j:]
-	#print result
-	return result
 			
 def k_merge(iterables):
 	h=[]
@@ -347,18 +367,15 @@ def k_merge1(iterables):
 			return
 					
 if __name__=='__main__':
-	seq=sample(xrange(100000),1000)
+	seq=sample(xrange(100000),10)
 	length = len(seq)
-	seqa = list(seq)
+    seqe = list(seq)
 	start = time()
-	BubbleSort(seqa)
+	seqf=MergeSort(seqe)
 	end = time()
-	print "BubbleSort %f" % (end-start)
-	seqb = list(seq)
-	start = time()
-	BubbleSort2(seqb)
-	end = time()
-	print "BubbleSort1 %f" % (end-start)
+	print "MergeSort %f" % (end-start)
+	print seqf == seqa
+	print seq == seqf
 	
 	
 def test():
